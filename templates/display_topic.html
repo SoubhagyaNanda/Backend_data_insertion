@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <center>
+        <!-- Webpage Heading -->
+        <h1> Display_Topic </h1>
+
+        <!-- Table -->
+        <table>
+
+            <tr>
+                <th>Topic_Name</th>
+            </tr>
+
+            <!-- Here we are using for loop on QSTO where we have save our objects in views file. and we are running for loop on it when ever user enter new data it will create a new coloum and data. -->
+            {% for to in QSTO %}
+
+                <tr>
+                    <td>{{ to.topic_name }}</td>
+                </tr>
+
+            {% endfor %}
+
+        </table>
+    </center>
+
+</body>
+</html>
