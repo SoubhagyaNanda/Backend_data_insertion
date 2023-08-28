@@ -32,7 +32,7 @@ class AccessRecord(models.Model):
 
     date= models.DateField(auto_now=True)
     author= models.CharField(max_length=100)
-    email= models.EmailField(default='soubhagyaranjannanda360@gmail.com')
+    email= models.EmailField()
 
     def __str__(self):
         return self.author

@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+          }
+    </style>
 </head>
 <body>
     
@@ -12,7 +18,7 @@
             
             <tr>
 
-                <th>pk</th>
+                <th>slno</th>
                 <th>Topic_name</th>
                 <th>Name</th>
                 <th>Url</th>
@@ -21,11 +27,12 @@
 
             {% for wo in QSWO %}
 
+            <tr>
                 <td>{{ wo.pk }}</td>
                 <td>{{ wo.topic_name }}</td>
                 <td>{{ wo.name }}</td>
                 <td>{{ wo.url }}</td>
-
+            </tr>
 
             {% endfor %}
 
