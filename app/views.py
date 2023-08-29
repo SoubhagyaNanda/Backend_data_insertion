@@ -2,6 +2,7 @@ from django.shortcuts import render
 from app.models import *
 from django.http import*
 from django.db.models.functions import Length
+from django.db.models import Q
 # Create your views here.
 
 
@@ -56,10 +57,15 @@ def display_webpage(request):
 # it will search and return those string who dont have specified character inside string
     QSWO=Webpage.objects.exclude(url__contains='R')
 
+# Writing query sets.
+    QSWO=Webpage.objects.filter(Q(topic_name='cricket') & Q(url__contains='in'))
 
+# We can't connect forigen key with same forign key.
+    # QSWO=Webpage.objects.filter(Q(topic_name__startswith='f') & Q(topic_name__endswith='l'))
 
+    QSWO=Webpage.objects.exclude(Q(topic_name='football') | Q(url__endswith='in'))
 
-
+    QSWO= Webpage.objects.all()
 
     d= {'QSWO' : QSWO}
     return render(request, 'display_webpage.html', context= d)
@@ -113,3 +119,34 @@ def Insert_AccessRecord(request):
     ao.save()
 
     return HttpResponse('Data is Inserted Broooooo')
+
+
+
+
+def Update_webpage(request):
+
+        QSWO = Webpage.objects.all()
+
+        # Webpage.objects.filter(topic_name='cricket').update(name='VIRAT KOHLI')
+
+        # Webpage.objects.filter(name='VIRAT KOHLI').update(url='https://kohli.com')
+
+        # Webpage.objects.filter(name='Python').update(url='https://kohli.com')
+
+        # Webpage.objects.filter(name='VIRAT KOHLI').update(topic_name='Chess')
+
+        # Webpage.objects.filter(name='VIRAT KOHLI').update(topic_name='Boxing')
+
+
+        # Webpage.objects.update_or_create(topic_name='Foot Ball',defaults={'name':'NeyMar'})
+        # Webpage.objects.update_or_create(topic_name='Volley Ball',defaults={'name':'NeyMar'})
+    
+        # RO=Topic.objects.get(topic_name='football')
+        # Webpage.objects.update_or_create(name='dileep',defaults={'topic_name':RO, 'url':'http://dileep.com'})
+    
+        # Webpage.objects.update_or_create(name='Hardhik',defaults={'url':'https://Hardhik.com'})
+        CTO=Topic.objects.get(topic_name='cricket')
+        Webpage.objects.update_or_create(name='Hardhik',defaults={'topic_name':CTO,'url':'https://Hardhik.com'})
+
+        d = {'QSWO':QSWO}
+        return render(request, 'display_webpage.html', context= d)
