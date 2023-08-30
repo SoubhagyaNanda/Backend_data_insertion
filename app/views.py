@@ -133,20 +133,45 @@ def Update_webpage(request):
 
         # Webpage.objects.filter(name='Python').update(url='https://kohli.com')
 
-        # Webpage.objects.filter(name='VIRAT KOHLI').update(topic_name='Chess')
+        # Webpage.objects.filter(name='VIRAT KOHLI').update(topic_name='football')
+
+        # Webpage.objects.filter(name='VIRAT KOHLI').update(topic_name='cricket')
+
 
         # Webpage.objects.filter(name='VIRAT KOHLI').update(topic_name='Boxing')
 
 
-        # Webpage.objects.update_or_create(topic_name='Foot Ball',defaults={'name':'NeyMar'})
+        # Webpage.objects.update_or_create(topic_name='kabbadi',defaults={'name':'Messi'})
+        # Webpage.objects.all()
         # Webpage.objects.update_or_create(topic_name='Volley Ball',defaults={'name':'NeyMar'})
     
         # RO=Topic.objects.get(topic_name='football')
         # Webpage.objects.update_or_create(name='dileep',defaults={'topic_name':RO, 'url':'http://dileep.com'})
     
         # Webpage.objects.update_or_create(name='Hardhik',defaults={'url':'https://Hardhik.com'})
-        CTO=Topic.objects.get(topic_name='cricket')
-        Webpage.objects.update_or_create(name='Hardhik',defaults={'topic_name':CTO,'url':'https://Hardhik.com'})
+        # CTO=Topic.objects.get(topic_name='cricket')
+        # Webpage.objects.update_or_create(name='Hardhik',defaults={'topic_name':CTO,'url':'https://Hardhik.com'})
+
+
+        ww= Topic.objects.get(topic_name='WWE')
+        Webpage.objects.update_or_create(topic_name=ww, name='HHH', defaults={'url':'http://wwe.in'})
 
         d = {'QSWO':QSWO}
         return render(request, 'display_webpage.html', context= d)
+
+
+
+def Delete_webpage(request):
+     
+     QSWO = Webpage.objects.all()
+
+
+     Webpage.objects.filter(name='Hardhik').delete()
+
+     Webpage.objects.filter(topic_name='golf').delete()
+
+     Webpage.objects.filter(topic_name='cricket').delete()
+
+     Webpage.objects.all().delete()
+     d = {'QSWO' : QSWO}
+     return render(request, 'display_webpage.html', context= d)

@@ -27,4 +27,5 @@ urlpatterns = [
     path('Insert_Webpage/', Insert_Webpage, name='Insert_Webpage'),
     path('Insert_AccessRecord/', Insert_AccessRecord, name='Insert_AccessRecord'),
     path('Update_webpage/', Update_webpage, name='Update_webpage'),
+    path('Delete_webpage/', Delete_webpage, name='Delete_webpage'),
 ]
